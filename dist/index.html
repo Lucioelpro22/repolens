@@ -31,11 +31,13 @@
       <header class="topbar">
         <button class="menu" aria-label="Abrir menú">☰</button>
         <div><p class="eyebrow">WORKSPACE / PLATFORM</p><h1>Repository health</h1></div>
-        <div class="actions"><button class="icon-btn" aria-label="Notificaciones">◌<i></i></button><button class="primary" id="connectBtn"><span>＋</span> Connect repository</button></div>
+        <div class="actions"><label class="search"><span>⌕</span><input id="repoSearch" type="search" placeholder="Search repositories…" aria-label="Buscar repositorios"><kbd>⌘ K</kbd></label><button class="icon-btn" aria-label="Notificaciones">◌<i></i></button><button class="primary" id="connectBtn"><span>＋</span> Connect repository</button></div>
       </header>
 
       <section class="content" id="overview">
-        <div class="summary-head"><div><h2>Good morning, Alex.</h2><p>Here’s what’s happening across your codebase.</p></div><div class="updated"><span></span>Updated 8 min ago</div></div>
+        <div class="summary-head"><div><h2>Good morning, Alex.</h2><p>Here’s what’s happening across your codebase.</p></div><div class="updated"><span></span>All systems operational · Updated 8 min ago</div></div>
+
+        <div class="insight"><span class="insight-icon">✦</span><div><strong>Weekly insight</strong><p>Resolving 3 high-impact issues would lift your workspace health score from 78 to an estimated 84.</p></div><button id="reviewIssues">Review priority issues <span>→</span></button></div>
 
         <div class="metrics">
           <article class="metric"><div class="metric-top"><span>HEALTH SCORE</span><em class="green">↗ 4.2%</em></div><div class="metric-main"><strong>78</strong><small>/100</small><div class="ring"><span>78</span></div></div><p>Healthy · 3 repos need attention</p></article>
@@ -46,7 +48,7 @@
 
         <div class="grid-main">
           <section class="panel repositories" id="repositories">
-            <div class="panel-head"><div><h3>Repositories</h3><p>12 connected · sorted by health</p></div><div class="filters"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="attention">Needs attention</button><button class="more">•••</button></div></div>
+            <div class="panel-head"><div><h3>Repositories</h3><p><span id="visibleCount">5</span> shown · sorted by health</p></div><div class="filters"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="attention">Needs attention</button><button class="more" id="exportBtn" title="Export CSV">↓ Export</button></div></div>
             <div class="table-wrap"><table><thead><tr><th>REPOSITORY</th><th>HEALTH</th><th>DEBT</th><th>COVERAGE</th><th>ISSUES</th><th>LAST SCAN</th></tr></thead><tbody id="repoRows"></tbody></table></div>
             <button class="view-all">View all repositories <span>→</span></button>
           </section>
