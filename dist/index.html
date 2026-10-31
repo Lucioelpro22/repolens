@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="RepoLens analiza la salud de tus repositorios: deuda técnica, cobertura, dependencias y documentación." />
+  <title>RepoLens — Repository health</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="RepoLens inicio"><span class="brand-mark">R</span><span>RepoLens</span></a>
+      <nav aria-label="Navegación principal">
+        <a class="nav-item active" href="#overview"><span>⌂</span>Overview</a>
+        <a class="nav-item" href="#repositories"><span>⌘</span>Repositories <b>12</b></a>
+        <a class="nav-item" href="#issues"><span>△</span>Issues <b>47</b></a>
+        <a class="nav-item" href="#reports"><span>▤</span>Reports</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="scan-card"><div class="pulse"></div><div><strong>Next scan</strong><small>Today, 18:00</small></div><button aria-label="Ejecutar análisis">→</button></div>
+        <a class="nav-item" href="#settings"><span>⚙</span>Settings</a>
+        <div class="user"><span>AM</span><div><strong>Alex Morgan</strong><small>Engineering Lead</small></div><button>•••</button></div>
+      </div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <button class="menu" aria-label="Abrir menú">☰</button>
+        <div><p class="eyebrow">WORKSPACE / PLATFORM</p><h1>Repository health</h1></div>
+        <div class="actions"><button class="icon-btn" aria-label="Notificaciones">◌<i></i></button><button class="primary" id="connectBtn"><span>＋</span> Connect repository</button></div>
+      </header>
+
+      <section class="content" id="overview">
+        <div class="summary-head"><div><h2>Good morning, Alex.</h2><p>Here’s what’s happening across your codebase.</p></div><div class="updated"><span></span>Updated 8 min ago</div></div>
+
+        <div class="metrics">
+          <article class="metric"><div class="metric-top"><span>HEALTH SCORE</span><em class="green">↗ 4.2%</em></div><div class="metric-main"><strong>78</strong><small>/100</small><div class="ring"><span>78</span></div></div><p>Healthy · 3 repos need attention</p></article>
+          <article class="metric"><div class="metric-top"><span>TECH DEBT</span><em class="amber">+2.4h</em></div><div class="metric-main"><strong>24.8</strong><small>hours</small></div><div class="spark amber-spark"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><p>↑ 11% from last week</p></article>
+          <article class="metric"><div class="metric-top"><span>AVG. COVERAGE</span><em class="green">↗ 3.1%</em></div><div class="metric-main"><strong>72.4</strong><small>%</small></div><div class="spark green-spark"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><p>Target: 80% · Gap: 7.6%</p></article>
+          <article class="metric"><div class="metric-top"><span>DEPENDENCIES</span><em class="red">7 critical</em></div><div class="metric-main"><strong>34</strong><small>outdated</small></div><div class="deps"><span class="critical"></span><span class="warning"></span><span class="safe"></span></div><p>7 critical · 12 major · 15 minor</p></article>
+        </div>
+
+        <div class="grid-main">
+          <section class="panel repositories" id="repositories">
+            <div class="panel-head"><div><h3>Repositories</h3><p>12 connected · sorted by health</p></div><div class="filters"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="attention">Needs attention</button><button class="more">•••</button></div></div>
+            <div class="table-wrap"><table><thead><tr><th>REPOSITORY</th><th>HEALTH</th><th>DEBT</th><th>COVERAGE</th><th>ISSUES</th><th>LAST SCAN</th></tr></thead><tbody id="repoRows"></tbody></table></div>
+            <button class="view-all">View all repositories <span>→</span></button>
+          </section>
+
+          <aside class="panel attention" id="issues">
+            <div class="panel-head"><div><h3>Needs attention</h3><p>Highest-impact issues</p></div><span class="count">7</span></div>
+            <div class="issue"><span class="issue-icon danger">!</span><div><b>Critical vulnerability</b><p>lodash · CVE-2025-1347</p><small>api-gateway</small></div><button>→</button></div>
+            <div class="issue"><span class="issue-icon warning">↑</span><div><b>Coverage dropped 12%</b><p>Payments module</p><small>web-app</small></div><button>→</button></div>
+            <div class="issue"><span class="issue-icon purple">◇</span><div><b>Missing documentation</b><p>23 public APIs undocumented</p><small>core-sdk</small></div><button>→</button></div>
+            <div class="issue"><span class="issue-icon warning">⌁</span><div><b>High complexity</b><p>processOrder() · score 42</p><small>order-service</small></div><button>→</button></div>
+            <button class="view-all">View all 47 issues <span>→</span></button>
+          </aside>
+        </div>
+
+        <section class="panel trend" id="reports">
+          <div class="panel-head"><div><h3>Health trend</h3><p>Average score across all repositories</p></div><select aria-label="Periodo"><option>Last 30 days</option><option>Last 90 days</option></select></div>
+          <div class="chart"><div class="ylabels"><span>100</span><span>75</span><span>50</span><span>25</span><span>0</span></div><svg viewBox="0 0 900 210" preserveAspectRatio="none" aria-label="Gráfico de evolución"><defs><linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34d399" stop-opacity=".22"/><stop offset="1" stop-color="#34d399" stop-opacity="0"/></linearGradient></defs><path class="area" d="M0,150 C70,140 100,145 145,120 S250,130 300,106 S400,95 455,110 S540,68 590,78 S685,60 735,70 S825,25 900,38 L900,210 L0,210Z"/><path class="line" d="M0,150 C70,140 100,145 145,120 S250,130 300,106 S400,95 455,110 S540,68 590,78 S685,60 735,70 S825,25 900,38"/><line x1="735" y1="0" x2="735" y2="210" class="hoverline"/><circle cx="735" cy="70" r="6" class="point"/></svg><div class="tooltip"><small>OCT 22</small><strong>78.4</strong><span>↗ 4.2%</span></div><div class="xlabels"><span>Oct 1</span><span>Oct 8</span><span>Oct 15</span><span>Oct 22</span><span>Oct 29</span></div></div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="connectModal"><form method="dialog"><button class="close" aria-label="Cerrar">×</button><span class="modal-icon">⌘</span><h2>Connect a repository</h2><p>Paste a GitHub repository URL. RepoLens will run a first health scan in under a minute.</p><label>Repository URL<input id="repoUrl" type="url" placeholder="https://github.com/org/repository" required></label><div class="modal-actions"><button value="cancel">Cancel</button><button class="primary" id="analyzeBtn" value="default">Analyze repository</button></div></form></dialog>
+  <div class="toast" id="toast"><span>✓</span><div><b>Repository queued</b><small>Initial analysis has started.</small></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
