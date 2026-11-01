@@ -31,7 +31,7 @@
       <header class="topbar">
         <button class="menu" aria-label="Abrir menú">☰</button>
         <div><p class="eyebrow">WORKSPACE / PLATFORM</p><h1>Repository health</h1></div>
-        <div class="actions"><label class="search"><span>⌕</span><input id="repoSearch" type="search" placeholder="Search repositories…" aria-label="Buscar repositorios"><kbd>⌘ K</kbd></label><button class="icon-btn" aria-label="Notificaciones">◌<i></i></button><button class="primary" id="connectBtn"><span>＋</span> Connect repository</button></div>
+        <div class="actions"><label class="search"><span>⌕</span><input id="repoSearch" type="search" placeholder="Search repositories…" aria-label="Buscar repositorios"><kbd>⌘ K</kbd></label><button class="icon-btn" id="themeBtn" aria-label="Cambiar tema" title="Cambiar tema">☾</button><button class="icon-btn" aria-label="Notificaciones">◌<i></i></button><button class="primary" id="connectBtn"><span>＋</span> Connect repository</button></div>
       </header>
 
       <section class="content" id="overview">
@@ -44,6 +44,7 @@
           <article class="metric"><div class="metric-top"><span>TECH DEBT</span><em class="amber">+2.4h</em></div><div class="metric-main"><strong>24.8</strong><small>hours</small></div><div class="spark amber-spark"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><p>↑ 11% from last week</p></article>
           <article class="metric"><div class="metric-top"><span>AVG. COVERAGE</span><em class="green">↗ 3.1%</em></div><div class="metric-main"><strong>72.4</strong><small>%</small></div><div class="spark green-spark"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><p>Target: 80% · Gap: 7.6%</p></article>
           <article class="metric"><div class="metric-top"><span>DEPENDENCIES</span><em class="red">7 critical</em></div><div class="metric-main"><strong>34</strong><small>outdated</small></div><div class="deps"><span class="critical"></span><span class="warning"></span><span class="safe"></span></div><p>7 critical · 12 major · 15 minor</p></article>
+          <article class="metric"><div class="metric-top"><span>DOCUMENTATION</span><em class="amber">23 gaps</em></div><div class="metric-main"><strong>68</strong><small>% complete</small></div><div class="doc-progress"><span></span></div><p>README 92% · Public APIs 54%</p></article>
         </div>
 
         <div class="grid-main">
@@ -72,6 +73,7 @@
   </div>
 
   <dialog id="connectModal"><form method="dialog"><button class="close" aria-label="Cerrar">×</button><span class="modal-icon">⌘</span><h2>Connect a repository</h2><p>Paste a GitHub repository URL. RepoLens will run a first health scan in under a minute.</p><label>Repository URL<input id="repoUrl" type="url" placeholder="https://github.com/org/repository" required></label><div class="modal-actions"><button value="cancel">Cancel</button><button class="primary" id="analyzeBtn" value="default">Analyze repository</button></div></form></dialog>
+  <dialog id="repoDetail" class="detail-modal"><form method="dialog"><button class="close" aria-label="Cerrar">×</button><div class="detail-title"><span class="repo-icon" id="detailIcon">R</span><div><p class="eyebrow">REPOSITORY ANALYSIS</p><h2 id="detailName">Repository</h2><small id="detailLang">Language</small></div></div><div class="detail-score"><div><span>HEALTH SCORE</span><strong id="detailScore">—</strong></div><p id="detailSummary"></p></div><div class="detail-grid"><div><span>TECH DEBT</span><strong id="detailDebt">—</strong></div><div><span>COVERAGE</span><strong id="detailCoverage">—</strong></div><div><span>OPEN ISSUES</span><strong id="detailIssues">—</strong></div><div><span>DOCUMENTATION</span><strong id="detailDocs">—</strong></div></div><h3>Recommended actions</h3><ul id="detailActions"></ul><div class="modal-actions"><button value="cancel">Close</button><button class="primary" value="default">Open report</button></div></form></dialog>
   <div class="toast" id="toast"><span>✓</span><div><b>Repository queued</b><small>Initial analysis has started.</small></div></div>
   <script src="app.js"></script>
 </body>

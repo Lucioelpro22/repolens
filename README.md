@@ -10,6 +10,9 @@ RepoLens is a responsive repository-health dashboard for engineering teams. It b
 - Repository search and risk filters
 - Priority issue feed
 - CSV report export
+- Repository detail and recommended-action views
+- Documentation completeness tracking
+- Persistent light and dark themes
 - Responsive, accessible interface
 
 ## Run locally
